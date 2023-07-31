@@ -31,7 +31,7 @@ public class Conta {
             throw  new IllegalArgumentException("Valor deve ser maior 0 (zero).");
         }
 
-        if (saldo - valor < 0 ) {
+        if (getSaldoDisponivel() - valor < 0 ) {
             throw  new IllegalArgumentException("Saldo insuficiente.");
         }
         saldo -= valor;
@@ -56,5 +56,7 @@ public class Conta {
     public double getSaldo() {
         return saldo;
     }
+
+    public double getSaldoDisponivel() { return getSaldo(); }
 
 }
