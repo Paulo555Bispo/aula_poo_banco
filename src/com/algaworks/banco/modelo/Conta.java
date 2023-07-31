@@ -2,7 +2,10 @@ package com.algaworks.banco.modelo;
 
 import java.util.Objects;
 
-public class Conta {
+//Colocando a palavra 'abstract' antes da classe, nos impedimos que objetos dessa classe Conta,
+// seja instanciada diretamente, sem ser por uma subclasse específica.
+// Você também pode criar métodos abstratos
+public abstract class Conta {
 
     private Pessoa titular;
     private int agencia;
@@ -36,6 +39,9 @@ public class Conta {
         }
         saldo -= valor;
     }
+
+    // Todas as subclasses da classe Conta, serão obrigadas a implementar o método abstrato da classe Conta.
+    public abstract void debitarTarifaMensal();
 
     public void sacar(double valor, double taxaSaque) {
         sacar(valor + taxaSaque);
