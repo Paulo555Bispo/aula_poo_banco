@@ -1,9 +1,6 @@
 package com.algaworks.banco.app;
 
-import com.algaworks.banco.modelo.Conta;
-import com.algaworks.banco.modelo.ContaEspecial;
-import com.algaworks.banco.modelo.ContaInvestimento;
-import com.algaworks.banco.modelo.Pessoa;
+import com.algaworks.banco.modelo.*;
 
 public class Principal {
 
@@ -16,8 +13,9 @@ public class Principal {
         titular2.setNome("Maria Abadia");
         titular2.setDocumento("444555666-45");
 
-        var minhaConta = new ContaInvestimento(titular1, 123, 987);
+        var caixaEletronico = new CaixaEletronico();
 
+        var minhaConta = new ContaInvestimento(titular1, 123, 987);
         var suaConta = new ContaEspecial(titular2, 222, 333, 1_000);
 
         minhaConta.depositar(15_000);
@@ -27,11 +25,15 @@ public class Principal {
         suaConta.depositar(15_000);
         suaConta.sacar(15_500);
 
-        System.out.println("Titular: " + minhaConta.getTitular().getNome());
-        System.out.println("Saldo: " + minhaConta.getSaldo());
+        caixaEletronico.imprimirSaldo(minhaConta);
+        System.out.println();
+        caixaEletronico.imprimirSaldo(suaConta);
 
-        System.out.println("Titular: " + suaConta.getTitular().getNome());
-        System.out.println("Saldo: " + suaConta.getSaldo());
+//        System.out.println("Titular: " + minhaConta.getTitular().getNome());
+//        System.out.println("Saldo: " + minhaConta.getSaldo());
+//
+//        System.out.println("Titular: " + suaConta.getTitular().getNome());
+//        System.out.println("Saldo: " + suaConta.getSaldo());
     }
 }
 
