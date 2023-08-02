@@ -1,5 +1,7 @@
 package com.algaworks.banco.modelo;
 
+import com.algaworks.banco.modelo.excecao.SaldoInsuficienteException;
+
 import java.util.Objects;
 
 // Uma classe abstrata, não pode ser instanciada.
@@ -36,7 +38,7 @@ public abstract class Conta {
         }
 
         if (getSaldoDisponivel() - valor < 0 ) {
-            throw  new IllegalArgumentException("Saldo insuficiente.");
+            throw  new SaldoInsuficienteException("Saldo insuficiente.");
         }
         saldo -= valor;
     }
