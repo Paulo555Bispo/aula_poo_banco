@@ -2,6 +2,7 @@ package com.algaworks.banco.modelo;
 
 import com.algaworks.banco.modelo.excecao.SaldoInsuficienteException;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 // Uma classe abstrata, não pode ser instanciada.
@@ -13,7 +14,7 @@ public abstract class Conta {
     private Pessoa titular;
     private int agencia;
     private int numero;
-    private double saldo;
+    private BigDecimal saldo = BigDecimal.ZERO;
 
     Conta() {
     }
@@ -25,30 +26,30 @@ public abstract class Conta {
         this.numero = numero;
     }
 
-    public void depositar(double valor) {
-        if (valor <= 0) {
+    public void depositar(BigDecimal valor) {
+        if (valor.compareTo(BigDecimal.ZERO) <= 0) {
             throw  new IllegalArgumentException("Valor deve ser maior que 0 (zero).");
         }
-        saldo += valor;
+        saldo = saldo.add(valor);
     }
 
-    public void sacar(double valor) {
-        if (valor <= 0) {
+    public void sacar(BigDecimal valor) {
+        if (valor.compareTo(BigDecimal.ZERO) <= 0) {
             throw  new IllegalArgumentException("Valor deve ser maior 0 (zero).");
         }
 
-        if (getSaldoDisponivel() - valor < 0 ) {
+        if (getSaldoDisponivel().subtract(valor).compareTo(BigDecimal.ZERO)  < 0 ) {
             throw  new SaldoInsuficienteException("Saldo insuficiente.");
         }
-        saldo -= valor;
+        saldo = saldo.subtract(valor);
     }
 
     // Todas as subclasses da classe Conta, serão obrigadas a implementar o método abstrato da classe Conta.
     // Um método abstrato, não tem implementação.
     public abstract void debitarTarifaMensal();
 
-    public void sacar(double valor, double taxaSaque) {
-        sacar(valor + taxaSaque);
+    public void sacar(BigDecimal valor, BigDecimal taxaSaque) {
+        sacar(valor.add(taxaSaque));
     }
 
     public Pessoa getTitular() {
@@ -63,10 +64,10 @@ public abstract class Conta {
         return numero;
     }
 
-    public double getSaldo() {
+    public BigDecimal getSaldo() {
         return saldo;
     }
 
-    public double getSaldoDisponivel() { return getSaldo(); }
+    public BigDecimal getSaldoDisponivel() { return getSaldo(); }
 
 }

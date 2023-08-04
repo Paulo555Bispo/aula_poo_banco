@@ -1,11 +1,12 @@
 package com.algaworks.banco.modelo.pagamento;
 
+import java.math.BigDecimal;
 import java.sql.SQLOutput;
 
 public interface DocumentoPagavel {
 
     // Seria redundante declarar os métodos public abstract, portanto é desnecessário na interface.
-    double getValorTotal();
+    BigDecimal getValorTotal();
     boolean estaPago();
     void quitarPagamento();
 
