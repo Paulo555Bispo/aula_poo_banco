@@ -17,7 +17,7 @@ public class Principal2 {
         Set<Pessoa> pessoas = new HashSet<>();
         pessoas.add(pessoa1);
         pessoas.add(pessoa2);
-/*
+/**
 
         System.out.println(pessoas);
 
@@ -29,8 +29,10 @@ public class Principal2 {
         }
 
 */
-         /*Enhanced for → Usando um 'for' aprimorado*/
-/*
+/**
+          *  Enhanced for → Usando um 'for' aprimorado
+*/
+/**
         for (Pessoa pessoa : pessoas) {
             System.out.println(pessoa.getNome());
         }
