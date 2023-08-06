@@ -21,7 +21,7 @@ public class Banco {
         conta1.depositar(new BigDecimal("120"));
         conta2.depositar(new BigDecimal("150"));
         conta3.depositar(new BigDecimal("500"));
-        conta4.depositar(new BigDecimal("12000"));
+        conta5.depositar(new BigDecimal("12000"));
 
         contas.add(conta1);
         contas.add(conta2);
